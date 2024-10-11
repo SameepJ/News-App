@@ -15,13 +15,13 @@ class NewsProvider with ChangeNotifier {
   String? get errorMessage => _errorMessage;
 
   // Fetch news from repository
-  Future<void> fetchNews() async {
+  Future<void> fetchNews(String countryCode) async {
     try {
       _isLoading = true;
       _errorMessage = null;
       notifyListeners();
 
-      _articles = await _newsRepository.fetchNews();
+      _articles = await _newsRepository.fetchNews(countryCode);
       _isLoading = false;
 
       // If no articles are found, display an error message

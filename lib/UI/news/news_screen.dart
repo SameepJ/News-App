@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';  // Ensure you import this
-import 'package:google_fonts/google_fonts.dart'; // Import Google Fonts package
+import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../Provider/news_provider.dart';
-import '../widgets/news_card.dart';  // Assuming this widget is your custom news card widget
+import '../../repositories/firebase_services.dart';
+import '../widgets/news_card.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 
 class NewsScreen extends StatefulWidget {
   @override
   State<NewsScreen> createState() => _NewsScreenState();
 }
 
+
 class _NewsScreenState extends State<NewsScreen> {
+  String? countryCode;
+  RemoteConfigService? remoteConfigService;
   @override
   void initState() {
     super.initState();
-    // Fetch news when the screen is initialized
-    Provider.of<NewsProvider>(context, listen: false).fetchNews();
+    final remoteConfig = FirebaseRemoteConfig.instance;
+    remoteConfigService = RemoteConfigService(remoteConfig!);
+    countryCode = remoteConfigService!.getCountryCode();
+    Provider.of<NewsProvider>(context, listen: false).fetchNews(countryCode!.toLowerCase());
   }
 
   @override
@@ -25,18 +33,30 @@ class _NewsScreenState extends State<NewsScreen> {
       appBar: AppBar(
         title: Text(
           'MyNews',
-          style: GoogleFonts.poppins(color: Colors.white,fontSize: 20, fontWeight: FontWeight.bold),
-          // Poppins font as you had before
+          style: GoogleFonts.poppins(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Color(0xFF0C54BE), // Primary color remains the same
         actions: [
-          Icon(Icons.send, color: Colors.white), // Send icon based on the image
-          SizedBox(width: 10),
-          Text(
-            'IN',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(width: 15),
+      Transform.rotate(
+      angle: 45 * 3.14 / 180, // Rotate 45 degrees
+        child: Icon(
+          Icons.navigation_sharp,
+          size: 20,
+          color: Colors.white,
+        ),
+      ), // Send icon based on the image
+          // SizedBox(width: 10),
+
+            Row(
+              children: [
+                SizedBox(width: 5),
+                Text(
+                  countryCode??"IN",
+                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(width: 15),
+              ],
+            ),
         ],
       ),
       backgroundColor: Color(0xFFF5F9FD),

@@ -31,7 +31,7 @@ class FirebaseRepo {
       throw e.message ?? 'An unknown error occurred';
     }
   }
-
+  // Login user
   Future<UserCredential> login(String email, String password) async {
     try {
       return await _auth.signInWithEmailAndPassword(email: email, password: password);

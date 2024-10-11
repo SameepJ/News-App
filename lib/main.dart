@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:provider/provider.dart'; // Import the provider package
+import 'package:lingopandasameepjain/repositories/firebase_services.dart';
+import 'package:provider/provider.dart';
 import 'Provider/auth_provider.dart';
 import 'Provider/news_provider.dart';
 import 'UI/auth/login_screen.dart';
-import 'UI/auth/signup_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();  // Initialize Firebase
+
+  final remoteConfig = FirebaseRemoteConfig.instance;
+  final remoteConfigService = RemoteConfigService(remoteConfig);
+
+  // Fetch and activate remote config
+  await remoteConfigService.fetchAndActivate();
   runApp(const MyApp());
 }
 

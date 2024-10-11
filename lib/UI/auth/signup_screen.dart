@@ -32,18 +32,18 @@ class _SignupScreenState extends State<SignupScreen> {
         title: Text(
           'MyNews',
           style: GoogleFonts.poppins(
-            color: Color(0xFF0C54BE), // Updated to OC54BE
+            color: Color(0xFF0C54BE),
             fontSize: 24,
-            fontWeight: FontWeight.bold, // Use Bold from Poppins
+            fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Color(0xFFF5F9FD), // Background color F5F9FD
+        backgroundColor: Color(0xFFF5F9FD),
       ),
-      backgroundColor: Color(0xFFF5F9FD), // Light background color from style guide
+      backgroundColor: Color(0xFFF5F9FD),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Form(
-          key: _formKey, // Assign the form key to the Form widget
+          key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,11 +76,11 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(color: Colors.white), // Set enabled border color to white
+                          borderSide: BorderSide(color: Colors.white),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(color: Colors.white), // Set focused border color to white
+                          borderSide: BorderSide(color: Colors.white),
                         ),
                       ),
                       validator: (value) {
