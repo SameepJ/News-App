@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "453871141618",
+    "project_id": "lingopandanews-app",
+    "storage_bucket": "lingopandanews-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453871141618:android:8e96c6e9c3c46fe763866b",
+        "android_client_info": {
+          "package_name": "com.example.lingopandasameepjain"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSVDlPdXoucJvF5D4NMoxLdyKn5dnRdVA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
